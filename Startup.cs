@@ -9,6 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using GestiStage.Data;
+using Blazorise;
+using Blazorise.Material;
+using Blazorise.Icons.Material;
+using MatBlazor;
 
 namespace GestiStage
 {
@@ -25,6 +29,14 @@ namespace GestiStage
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddBlazorise( options =>
+                {
+                    options.ChangeTextOnKeyPress = true; // optional
+                } )
+                .AddMaterialProviders()
+                .AddMaterialIcons();
+            services.AddMatBlazor();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();

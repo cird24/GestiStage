@@ -3,8 +3,9 @@
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
+<MatButton Raised="true" Icon="favorite">Whoop Whoop</MatButton>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<Button class="btn btn-primary" @onclick="IncrementCount">Click me</Button>
 
 @code {
     private int currentCount = 0;
