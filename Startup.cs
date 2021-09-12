@@ -8,11 +8,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using GestiStage.Data;
 using Blazorise;
 using Blazorise.Material;
 using Blazorise.Icons.Material;
 using MatBlazor;
+using Microsoft.EntityFrameworkCore;
+using GestiStage.DAO;
+using Microsoft.AspNetCore.ResponseCompression;
 
 namespace GestiStage
 {
@@ -39,7 +41,13 @@ namespace GestiStage
             services.AddMatBlazor();
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+             services.AddDbContextFactory<GestiStageDBcontext>(opt =>
+                opt.UseSqlite($"Data Source={nameof(GestiStageDBcontext.GestiStageDB)}.db"));
+            services.AddResponseCompression(opts =>
+                {
+                    opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                        new[] { "application/octet-stream" });
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
