@@ -15,7 +15,7 @@ namespace GestiStage
             Debug.WriteLine($"{ContextId} context created.");
         }
         
-        public DbSet<Departement> Students { get; set; }
+        public DbSet<Departement> Departements { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Departement>();
