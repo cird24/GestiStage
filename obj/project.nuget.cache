@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2N5RcYnD/2QLLnNeRVP+Mjia6dYZdWJaHU2ktjcU9iDfGNUkwMQPp1i9IA0pQMTKuhOe1eu9vkx5vhM9VogmYQ==",
+  "dgSpecHash": "PdibqRFaqk5V2FBF4jjkP5bVb2eX15cqFQvNZaYfruoOUiPKevh/pUvdtNPJ6ez4zUMG2sj6fsXFSahfi4cMDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jstonge\\Documents\\Cegep\\GestiStage\\GestiStage\\GestiStage.csproj",
+  "projectFilePath": "C:\\GIT\\GestiStage\\GestiStage.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
