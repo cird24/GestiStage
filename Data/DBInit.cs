@@ -13,9 +13,9 @@ namespace GestiStage
         {
             var departements = new List<Departement>
             {
-            new Departement{Nom="Informatique"},
-            new Departement{Nom="Administration"},
-            new Departement{Nom="Soins Infirmiers"},
+                new Departement{Nom="Informatique"},
+                new Departement{Nom="Administration"},
+                new Departement{Nom="Soins Infirmiers"},
             };
 
             departements.ForEach(s => context.Departements.Add(s));
