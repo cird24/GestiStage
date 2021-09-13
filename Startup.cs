@@ -13,7 +13,7 @@ using Blazorise.Material;
 using Blazorise.Icons.Material;
 using MatBlazor;
 using Microsoft.EntityFrameworkCore;
-using GestiStage.DAO;
+using GestiStage.Data;
 using Microsoft.AspNetCore.ResponseCompression;
 
 namespace GestiStage
@@ -41,8 +41,8 @@ namespace GestiStage
             services.AddMatBlazor();
             services.AddRazorPages();
             services.AddServerSideBlazor();
-             services.AddDbContextFactory<GestiStageDBcontext>(opt =>
-                opt.UseSqlite($"Data Source={nameof(GestiStageDBcontext.GestiStageDB)}.db"));
+             services.AddDbContextFactory<GestiStageDbContext>(opt =>
+                opt.UseSqlite($"Data Source={nameof(GestiStageDbContext.GestiStageDb)}.db"));
             services.AddResponseCompression(opts =>
                 {
                     opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(

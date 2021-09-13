@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using GestiStage.DAO;
+using GestiStage.Data;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GestiStage
@@ -20,7 +20,7 @@ namespace GestiStage
             var sp = host.Services.GetService<IServiceScopeFactory>()
                 .CreateScope()
                 .ServiceProvider;
-            var options = sp.GetRequiredService<DbContextOptions<GestiStageDBcontext>>();
+            var options = sp.GetRequiredService<DbContextOptions<GestiStageDbContext>>();
             await EnsureDbCreatedAndSeedAsync(options);
             // back to your regularly scheduled program
 
@@ -40,19 +40,19 @@ namespace GestiStage
         /// <param name="options">The configured options.</param>
         /// <param name="count">The number of contacts to seed.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        private static async Task EnsureDbCreatedAndSeedAsync(DbContextOptions<GestiStageDBcontext> options)
+        private static async Task EnsureDbCreatedAndSeedAsync(DbContextOptions<GestiStageDbContext> options)
         {
             // empty to avoid logging while inserting (otherwise will flood console)
             var factory = new LoggerFactory();
-            var builder = new DbContextOptionsBuilder<GestiStageDBcontext>(options)
+            var builder = new DbContextOptionsBuilder<GestiStageDbContext>(options)
                 .UseLoggerFactory(factory);
 
-            using var context = new GestiStageDBcontext(builder.Options);
+            using var context = new GestiStageDbContext(builder.Options);
             // result is true if the database had to be created
             if (await context.Database.EnsureCreatedAsync())
             {
-                var seed = new GestiStageDBInit();
-                await seed.SeedGestiStageDB(context);
+                var seed = new GestiStageDbInit();
+                await seed.SeedDB(context);
             }
         }
     }
